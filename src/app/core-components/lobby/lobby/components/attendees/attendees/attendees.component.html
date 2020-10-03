@@ -1,0 +1,89 @@
+
+    <div class="row p-1">
+      <div class="col-md-9 col-lg-9 col-xl-9 col-sm-12">
+        <div class="row" id="BookingTable">
+            <!--BOX-->
+            <div class="col-md-6 col-xl-3" *ngFor="let lobby of showTables; let i = index;">
+              <div class="card bg-patern">
+                <!-- <p class="m-b-0"><span class="float-right">
+                  <button type="button" class="btn  btn-danger btn-sm">Leave</button>
+                  </span>
+                </p> -->
+                <div class="card-body  text-center pt-5" *ngFor="let table of lobby; let j = index;">    
+                  <div class="m-b-5" style="position: relative; top: -48px;">
+                    <!-- {{tableNo}}---{{i+1}} -->
+                    <span class="float-right">
+                        <span *ngIf="((table.seat_no_1 + table.seat_no_2 + table.seat_no_3 + table.seat_no_4) < 10) && (tableNo !== (i+1))" style="font-size: 10px; padding: 5px" class="bg-success text-white sm">Grab a Seat</span>
+                        <span *ngIf="(tableNo === (i+1))" style="font-size: 10px; padding: 5px" class="bg-danger text-white sm"><span>Leave</span></span>
+                        <span *ngIf="!tableStatus && ((table.seat_no_1 + table.seat_no_2 + table.seat_no_3 + table.seat_no_4) === 10) && (tableNo !==(i+1))" style="font-size: 10px; padding: 5px" class="bg-primary text-white sm">Table is Full
+                        </span>
+
+                        </span>
+                  </div>
+                  <div class="row">
+                    <div class="img-fluid wid-100">
+                        <div id="tooltip" style="padding-left: 9px;">
+                            <button type="button" *ngIf="table.user_name_2"  class="btn btn-primary pt-1 pb-1 pl-2 pr-2" style="margin:2px">{{table.user_name_2 | uppercase | slice: 0:1 }}</button>
+                            <span class="tooltiptext">{{table.user_name_2}}</span>
+                        </div>
+                        <div class="img-fluid" *ngIf="!table.user_name_2 && role_id !== 4"><img src="assets/images/chair_2.png" style="cursor: pointer; padding-left: 6px" (click)="getSecondSeat(i, 2)" /></div>
+                        <div class="img-fluid" *ngIf="!table.user_name_2 && role_id === 4"><img src="assets/images/chair_2.png" style="padding-left: 6px"/></div>
+                      </div>
+                  </div>
+                  <div class="row align-items-center">
+                    
+                    <div class="img-fluid">
+                        <span id="tooltip">
+                            <button type="button" *ngIf="table.user_name_1"  class="btn btn-warning pt-1 pb-1 pl-2 pr-2" style="margin:2px">{{table.user_name_1 | uppercase | slice: 0:1 }}</button>
+                            <span class="tooltiptext">{{table.user_name_1}}</span>
+                          </span>
+                      <img *ngIf="!table.user_name_1 && role_id !==4" src="assets/images/chair_1.png" style="cursor: pointer" (click)="getFirstSeat(i, 1)" />
+                      <img *ngIf="!table.user_name_1 && role_id === 4" src="assets/images/chair_1.png" />
+                    </div>
+                    <div class="img-fluid "><img src="assets/images/table.png" /></div>
+                    <div class="img-fluid">
+                      <span id="tooltip">
+                        <button type="button" *ngIf="table.user_name_3"  class="btn btn-danger pt-1 pb-1 pl-2 pr-2" style="margin:2px">{{table.user_name_3 | uppercase | slice: 0:1 }}</button>
+                        <span class="tooltiptext">{{table.user_name_3}}</span>
+                      </span>
+                      <img *ngIf="!table.user_name_3 && role_id !==4" src="assets/images/chair_3.png" style="cursor: pointer" (click)="getThirdSeat(i, 3)"/>
+                      <img *ngIf="!table.user_name_3 && role_id === 4" src="assets/images/chair_3.png"/>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="img-fluid wid-100">
+                        <span id="tooltip"  style="padding-left: 12px">
+                            <button type="button" *ngIf="table.user_name_4"  class="btn btn-secondary pt-1 pb-1 pl-2 pr-2" style="margin:2px">{{table.user_name_4 | uppercase | slice: 0:1 }}</button>
+                            <span class="tooltiptext">{{table.user_name_4}}</span>
+                        </span>
+                        <img *ngIf="!table.user_name_4 && role_id !==4" class="pl-1" src="assets/images/chair_4.png" style="cursor: pointer" (click)="getFourthSeat(i, 4)"/>
+                        <img *ngIf="!table.user_name_4 && role_id===4" class="pl-1" src="assets/images/chair_4.png"/>
+                    </div>
+                  </div>
+                </div>
+                <div class="alert alert-warning"
+                  style="padding: 0px 0px 3px 3px;margin:0px;font-size: 10px;" role="alert">
+                  Waiting For Other Participants.
+                </div>
+              </div>
+            </div>
+            <!--BOX END-->
+  
+            <!--BOX-->
+  
+  
+  
+  <!--BOX-->
+  
+  
+  
+          </div>
+        
+      </div>
+
+      <div class="col-md-3 col-xl-3 col-lg-3 col-sm-12 ">
+          <app-participants></app-participants>
+        
+      </div>
+    </div>
+

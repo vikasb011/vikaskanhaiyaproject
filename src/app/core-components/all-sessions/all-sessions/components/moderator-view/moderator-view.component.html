@@ -1,0 +1,166 @@
+<div class="row">
+    <div class="col-md-9 col-xl-9">
+        <app-moderator-room></app-moderator-room>
+        <div class="row pt-5">
+          <div class="col-md-4 col-xl-4 p-1">
+              <div class="card">
+                  <div class="p-3" style="font-weight: 600">Chat</div>
+                  <div class="row">
+                      <div class="col-md-12 col-xl-12 col-sm-12">
+                          <div style="max-height: 300px; min-height: 300px; overflow:auto">
+                              <div class="card p-2" *ngFor="let mod of moderatorChat" style="border-left: 5px solid cadetblue; margin-bottom: 2px">
+                                  <div id="image_profile">
+                                    <span class="profileImage1 card-body">{{mod.user_name | slice:0:1}}</span>
+                                      <div id="profile_detail">
+                                          <div id="profile_name">{{mod.user_name}}</div>
+                                          <div>{{mod.message}} &nbsp; <i title="Approve" class="fa fa-check" aria-hidden="true" (click)="approveChat(mod.id, mod)" style="cursor: pointer; color: green;"></i></div>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div style="text-align: center; padding: 15px;" *ngIf="moderatorChat.length ===0">
+                                <div class="card p-2" style="border-left: 5px solid cadetblue; margin-bottom: 5px">
+                                  <div id="image_profile" style="margin-left: -60px;">
+                                      <div id="profile_detail" style="text-align: center;">
+                                          <div id="profile_name">No Record Found</div>
+                                          <div> &nbsp;</div>
+                                      </div>
+                                  </div>
+                              </div>
+                              </div>
+                          </div>
+
+
+
+
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+          <div class="col-md-4 col-xl-4 p-1">
+            <div class="card">
+                <div class="p-3" style="font-weight: 600"><span class="float-left">Poll</span><span class="float-right"></span></div>
+                <div class="row">
+                    <div class="col-md-12 col-xl-12 col-sm-12">
+                      <div style="max-height: 300px; min-height: 300px; overflow:auto">
+                        <div class="card p-2" *ngFor="let poll of  pollList; let i = index">
+                            <div id="question">
+                                <b class="float-left">Question:</b>
+                                <button class="btn btn-primary float-right" *ngIf="poll.status == '0'" (click)="getPollPush(poll._id,i)" style="padding: 1px 7px 1px 7px">Push</button>
+                                <button class="btn btn-primary float-right" *ngIf="poll.status == '1'" (click)="getstopPush(poll._id,i)" style="padding: 1px 7px 1px 7px">Stop</button>
+                                <button class="btn btn-primary float-right" *ngIf="poll.status == '2'" (click)="showResult(poll._id,i)" style="padding: 1px 7px 1px 7px">Show Result</button>
+                                <form>
+                                    <p>{{poll.question}}</p>
+                                    <div *ngFor="let choice of poll.choice">
+                                        <input *ngIf="poll.status !== '2'" id="{{choice.choice}}" type="radio" value="{{choice.choice}}" name="question1">
+                                        <label for="{{choice.choice}}" style="cursor:pointer"> &nbsp;{{choice.choice}}</label>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div style="text-align: center; padding: 15px" *ngIf="pollList.length ===0">
+                          <div class="card p-2" style="border-left: 5px solid cadetblue; margin-bottom: 5px">
+                            <div id="image_profile" style="margin-left: -60px;">
+                                <div id="profile_detail" style="text-align: center;">
+                                    <div id="profile_name">No Record Found</div>
+                                    <div> &nbsp;</div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+          <div class="col-md-4 col-xl-4 p-1">
+              <div class="card">
+                  <div class="p-3" style="font-weight: 600">Twitter</div>
+                  <div class="row">
+                      <div class="col-md-12 col-xl-12 col-sm-12">
+                          <div style="max-height: 300px; min-height: 300px; overflow: auto">
+                              <div class="card p-2" *ngFor="let tweet of pendingTweets; let i = index;" style="border-left: 5px solid cadetblue; margin-bottom: 3px">
+                                  <div id="image_profile">
+                                    <span class="profileImage1 card-body">{{tweet.name | slice:0:1}}</span>
+                                      <div id="profile_detail" style="padding: 0px;
+                                      margin-left: 5px;">
+                                        <div id="profile_name">{{tweet.name}}</div>
+                                        <div>{{tweet.message}} &nbsp; <i title="Approve" class="fa fa-check" aria-hidden="true" (click)="approveTweets(tweet, i)" style="cursor: pointer; color: green;"></i></div>
+                                    </div>
+                                  </div>
+                              </div>
+
+                          <div style="text-align: center; padding: 15px" *ngIf="pendingTweets.length ===0">
+                            <div class="card p-2" style="border-left: 5px solid cadetblue; margin-bottom: 5px">
+                              <div id="image_profile" style="margin-left: -60px;">
+                                  <div id="profile_detail" style="text-align: center;">
+                                      <div id="profile_name">No Record Found</div>
+                                      <div> &nbsp;</div>
+                                  </div>
+                              </div>
+                          </div>
+                          </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </div>
+    <div class="col-md-3 col-xl-3 p-1">
+        <div class="card">
+            <div class="pr-4 pt-3 pb-3 pl-1" style="font-weight: 600">
+                <div id="search_tab">
+                    <span class="fa fa-search"></span>
+                    <input type="text" class="form-control"  placeholder="Search Participants">
+                </div>
+            </div>
+            <div class="row" style="max-height: 370px; min-height: 370px; overflow:auto">
+              <div class="col-md-11 col-xl-11 col-sm-11 col-xs-1">
+                <div *ngFor="let list of participantsList; let i = index">
+                  <div *ngIf="list.is_online === '1'" class="card p-2" style="border-left: 5px solid cadetblue;margin-bottom: 5px">
+                      <div id="image_profile">
+                        <span class="profileImage1 card-body">{{list.name | slice:0:1}}</span>
+                          <div id="profile_detail">
+                              <div id="profile_name">{{list.name}}</div>
+                              <div>{{list.email}}</div>
+                          </div>
+                      </div>
+                  </div>
+                </div>
+                  <div style="text-align: center; padding: 15px" *ngIf="participantsList.length ===0">
+                    <div class="card p-2" style="border-left: 5px solid cadetblue; margin-bottom: 5px">
+                      <div id="image_profile" style="margin-left: -60px;">
+                          <div id="profile_detail" style="text-align: center;">
+                              <div id="profile_name">No Record Found</div>
+                              <div> &nbsp;</div>
+                          </div>
+                      </div>
+                  </div>
+                  </div>
+              </div>
+              <div class="col-md-1 col-xl-1 col-sm-1"></div>
+          </div>
+        </div>
+        <div class="card" *ngIf="pendingList.length >=1">
+                <div class="row">
+                        <div class="col-md-12 col-xl-12 pt-3"><b> &nbsp; Audience Chats</b></div>
+
+                        <div class="col-md-6 col-xl-6 p-1" *ngFor="let hand of pendingList; let h of index;">
+                            <!-- {{hand.status}} -->
+                            <div id="image_fluid">
+                                <i [ngClass]="(hand.status === 'approved')? 'fa fa-times': 'fas fa-check'" aria-hidden="true" (click)="toggleApproveCall(hand)"></i>
+                                <img src="assets/images/4th_1.jpg" alt="" class="img-fluid">
+                                <div id="img_text">
+                                    {{hand.name}}  &nbsp;
+                                    <span style="font-size:7px">{{hand.status}}</span>
+
+                                    <!-- <i class="fas fa-check"></i> -->
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+        </div>
+    </div>
+</div>

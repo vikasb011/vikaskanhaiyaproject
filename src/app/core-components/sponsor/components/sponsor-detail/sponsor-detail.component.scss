@@ -1,0 +1,64 @@
+#image_fluid {
+    img {
+        border-top-right-radius: 5px;
+        border-top-left-radius: 5px;
+    }
+    #img_text {
+        text-align: center;
+        padding-top: 3px;
+        // background: #342f2fbd;
+        background-color: #898d69;
+        background-image: linear-gradient(0deg, #000000 23%, #adb3b3 95%);
+        border-bottom-right-radius: 5px;
+        border-bottom-left-radius: 5px;
+        color: white;
+        height: 33px;
+        font-weight: 500;
+    }
+  }
+  
+  #img_banner {
+    img {
+        border-radius: 10px;
+    }
+    #img_icons {
+        text-align: center;
+        i {
+            font-size: 18px;
+            padding: 10px;
+            color: #342f2fbd;
+        }
+    }
+  }
+  
+  i {
+    font-size: 18px;
+    padding: 10px;
+    color: #4099ff;
+    cursor: pointer;
+  }
+  #sessions {
+    list-style-type: none;
+    padding-left: 0px;
+    display: inline-flex;
+    li {
+  
+    }
+    #sessionImage {
+      img {
+        border-radius: 10px;
+        cursor: pointer;
+      }
+  
+    }
+    .session_text {
+      position: relative;
+      bottom: 32px;
+      color: white;
+      padding: 5px;
+      .btn {
+        padding: 0px 10px;
+      }
+    }
+  }
+  

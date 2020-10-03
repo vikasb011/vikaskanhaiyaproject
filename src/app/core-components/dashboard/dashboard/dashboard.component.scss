@@ -1,0 +1,102 @@
+.card-body{
+  font-size: 14px;
+}
+.card-horizontal {
+  display: flex;
+  flex: 1 1 auto;
+}
+.card-text {
+  margin-bottom: 0;
+  margin-right: -23px;
+}
+#channels_item {
+	position: relative;
+}
+#channels_item_list {
+	position: absolute;
+	top: 10px;
+	left: 65px;
+	width: auto;
+}
+
+#image_profile {
+  img {
+      float: left;
+      border-radius: 50%;
+  }
+  #profile_detail {
+      padding: 5px;
+      margin-left: 55px;
+
+      #profile_name {
+          font-weight: 600;
+      }
+  }
+}
+
+#sessions {
+  list-style-type: none;
+  padding-left: 0px;
+  display: inline-flex;
+  li {
+
+  }
+  #sessionImage {
+    img {
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+  }
+  .session_text {
+    position: relative;
+    bottom: 32px;
+    color: white;
+    padding: 5px;
+    .btn {
+      padding: 0px 10px;
+    }
+  }
+}
+
+#speaker_section {
+  padding: 5px;
+  #speakers {
+    padding: 10px;
+    img {
+      border-radius: 5px;
+      float: left;
+      height: 75px;
+      width: 75px;
+    }
+    #speakerProfile {
+      margin-left: 85px;
+       div {
+        line-height: 25px;
+        i {
+          padding-right: 5px;
+        }
+      }
+    }
+  }
+}
+
+#sponsors {
+  position: relative;
+  text-align: center;
+  padding: 5px;
+  img {
+    text-align: center;
+    border-radius: 50%;
+    position: relative;
+    z-index: 13;
+    top: 20px;
+  }
+  .card {
+    height: 100px;
+    background: white;
+    .text-center {
+      line-height: 7;
+    }
+  }
+}

@@ -1,0 +1,40 @@
+<div class="row">
+    <div class="col-md-12 col-xl-12 pt-2">
+        <div class="container-fluid">
+                    <nav class="tabbable">
+                      <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                        <a *ngFor="let session of sessions; let i = index" class="nav-item nav-link" [ngStyle]="{'border-bottom': (dateString === session.date) ? '3px solid #da251c': 'none', 'background': (dateString === session.date) ? '#ffffff': session.color, 'cursor': 'pointer', 'color': (dateString === session.date)?'#da251c':'white', 'font-weight': '500'}" id="nav-profile-tab" data-toggle="tab" role="tab" (click)="getDateSessions(session.date)" aria-controls="nav-profile" aria-selected="false">{{session.date | date}}</a>
+                        <!-- <a *ngFor="let session of sessions; let i = index" [ngClass]="dateString === session.date ? 'nav-item nav-link active': 'nav-item nav-link'" style="cursor: pointer;" id="nav-profile-tab" data-toggle="tab" role="tab" (click)="getDateSessions(session.date)" aria-controls="nav-profile" aria-selected="false">{{session.date | date}}</a> -->
+                      </div>
+
+                    </nav>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-9 col-xl-9" style="padding-left: 45px">
+        <div class="timeline">
+          <div class="timeline-section" *ngFor="let session of activeSessions; let j = index">
+            <div class="timeline-date">
+                <button class="btn" style="color:#fff; background:#564bb9">{{session.start_time}}</button>
+            </div>
+            <div class="row">
+              <div class="col-sm-4">
+                <div class="timeline-box">
+                  <div class="box-content">
+                    <div class="box-item">
+                        <img src="{{session.banner}}" class="img-fluid" width="250" style="border-radius: 5px; cursor: pointer;" alt="" (click)="gotoWelcomeSession(session, j)">
+                        <span class="float-right" style="position: relative; right: 5px; top: -27px"><button class="btn btn-danger pl-1 pr-1 pt-0 pb-0" style="font-size:10px">{{session.status}}</button></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xl-3 pt-3">
+        <app-participants></app-participants>
+    </div>
+</div>

@@ -1,0 +1,46 @@
+<section class="container">
+
+        <div class="row">
+            <input type="text" [formControl]="appId">
+      
+            <input type="text" [formControl]="channel">
+      
+      
+          <div class="col-6">
+            <div class="row h-100">
+              <div class="col-12">
+                <button class="btn btn-primary" (click)="join()">Join Channel</button>
+                <button class="btn btn-primary" (click)="publish()">Publish Local Stream</button>
+                <button class="btn btn-primary" (click)="unpublish()">Unpublish Local Stream</button>
+                <button class="btn btn-danger"(click)="leave()">Leave</button>
+              </div>
+              <div class="col-12">
+                User id: {{ uid }}
+              </div>
+            </div>
+          </div>
+      
+          <div class="col-6">
+            <div class="row">
+              <h2 class="col-12">Connected: {{ connected }}</h2>
+              <h2 class="col-12">Published: {{ published }}</h2>
+            </div>
+          </div>
+      
+          <div class="col-12">
+            remote{{ remoteCalls | json }}
+          </div>
+        </div>
+      
+        <div class="row pt-3">
+          <div class="col">
+            <h2>Local</h2>
+            <div id="agora_local" class="local"></div>
+          </div>
+          <div class="col">
+            <h2>Remote</h2>
+            <div class="remote_calls" [id]="remoteCalls[0]" class="remote"></div>
+          </div>
+        </div>
+      
+      </section>

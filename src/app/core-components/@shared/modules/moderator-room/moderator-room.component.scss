@@ -1,0 +1,88 @@
+
+#image_fluid {
+    position: relative;
+    .toggle-icon {
+        display: block;
+        list-style-type: none;
+        position: absolute;
+        top: 2px;
+        right: 0px;
+        padding: 2px;
+        border-radius: 3px;
+        background: black;
+        li {
+            cursor: pointer;
+            padding: 2px;
+            font-size: 12px;
+            .fa {
+                background: #da251c;
+                padding: 2px 3px 1px 2px;
+                border-radius: 3px;
+                color: #f6f7fb;
+                }
+            .fas {
+                color: #f6f7fb;
+            }
+        }
+    }
+    // .fa {
+    //     position: absolute;
+    //     bottom: 36px;
+    //     color: white;
+    //     right: 3px;
+    //     background: red;
+    //     line-height: 10px;
+    //     padding: 5px;
+    //     border-radius: 50%;
+    // }
+    img {
+        border-top-right-radius: 5px;
+        border-top-left-radius: 5px;
+        height: 82px;
+        width: 134px;
+    }
+    #img_text {
+        text-align: center;
+        padding-top: 3px;
+        font-size: 11px;
+        // background: #342f2fbd;
+        background-color: #898d69;
+        background-image: linear-gradient(0deg, #000000 23%, #adb3b3 95%);
+        border-bottom-right-radius: 5px;
+        border-bottom-left-radius: 5px;
+        color: white;
+        height: 33px;
+        font-weight: 500;
+    }
+}
+
+#img_banner {
+    img {
+        border-radius: 10px;
+    }
+    #img_icons {
+        text-align: center;
+        padding: 2px;
+        i {
+            font-size: 18px;
+            padding: 10px;
+            color: #342f2fbd;
+        }
+    }
+}
+
+.local {
+    height: 350px;
+  }
+  
+  .remote {
+    top: 0;
+    left: 0;
+    right: 1rem;
+    bottom: 1rem;
+    width: 20vw;
+    height: 20vh;
+    border-radius: 5px;
+    overflow: hidden;
+    z-index: 1;
+  }

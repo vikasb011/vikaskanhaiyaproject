@@ -1,0 +1,41 @@
+// .local {
+//     position: fixed;
+//     right: 1rem;
+//     bottom: 1rem;
+//     width: 20vw;
+//     height: 20vh;
+//     border-radius: 5px;
+//     overflow: hidden;
+//     z-index: 1;
+//   }
+  
+//   .remote {
+//     position: fixed;
+//     top: 0;
+//     left: 0;
+//     width: 100vw;
+//     height: 100vh;
+//   }
+.local {
+    background: #f1f1f2;
+}
+
+.remote {
+    background: rgba(#333, 0.5);
+}
+
+.local,
+.remote {
+    height: 28vw;
+}
+.no-display{
+    display: none;
+}
+.mx-auto {
+    .fa {
+        color: #0074ff;
+        cursor: pointer;
+        font-size: 18px;
+        margin: 15px;
+    }
+}

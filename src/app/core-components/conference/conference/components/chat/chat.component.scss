@@ -1,0 +1,28 @@
+.close-window {
+	position: absolute;
+    right: 4px;
+    top: 5px;
+    z-index: 100;
+    font-size: 20px;
+}
+#channels_item {
+	position: relative;
+}
+#channels_item_list {
+	position: absolute; 
+	top: 10px; 
+	left: 65px; 
+	width: auto;
+}
+#image_text {
+    position: absolute;
+    background: #b3a3a37d;
+    width: auto;
+    bottom: 10%;
+    right: 5%;
+    border-radius: 7px;
+    padding: 5px 5px 0px 5px;
+}
+#thumbnail {
+    min-height: 270px;
+}

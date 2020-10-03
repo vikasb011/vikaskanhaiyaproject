@@ -1,0 +1,40 @@
+#image_profile {
+  img {
+      float: left;
+      border-radius: 50%;
+  }
+  #profile_detail {
+      padding: 5px;
+      margin-left: 55px;
+
+      #profile_name {
+          font-weight: 600;
+      }
+  }
+}
+// search tab
+#search_tab .form-control {
+	padding-left: 25px;
+}
+#search_tab {
+	position: relative;
+}
+#search_tab .fa-search {
+	position: absolute;
+	color: #aaa;
+	vertical-align: center;
+	top: 9px;
+	left: 6px;
+}
+.profileImage1 {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: cadetblue;
+  font-size: 14px;
+  color: #fff;
+  text-align: center;
+  float: left;
+  font-weight: bold;
+  padding: 10px;
+}

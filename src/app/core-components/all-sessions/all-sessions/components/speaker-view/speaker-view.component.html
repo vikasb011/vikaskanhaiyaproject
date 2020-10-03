@@ -1,0 +1,197 @@
+
+<div class="row">
+    <div class="col-md-9 col-xl-9">
+        <!-- <app-speaker-room></app-speaker-room> -->
+        <app-session-room></app-session-room>
+        <!-- <div class="row">
+            <div class="col-md-4 col-xl-4">
+                <div class="row">
+                    <div class="col-md-6 col-xl-6 p-1" *ngFor="let a of [0,1,2,3,4,5]">
+                        <div id="image_fluid">
+                            <img src="assets/images/4th_1.jpg" alt="" class="img-fluid">
+                            <div id="img_text">Speaker Camera</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8 col-xl-8">
+                <div class="row">
+                    <div class="col-md-12 col-xl-12 p-1">
+                        <div id="img_banner">
+                            <img src="assets/images/banner.jpg" alt="" class="img-fluid">
+                            <div id="img_icons" *ngIf="speaker_id === user_id">
+                                <span><i class="fa fa-volume-up" aria-hidden="true"></i></span>
+                                <span><i class="fa fa-video-camera" aria-hidden="true" style="color: #4099ff"></i></span>
+                                <span><i class="fa fa-share-square" aria-hidden="true"></i></span>
+                                <span><i class="fa fa-wifi" aria-hidden="true"></i></span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        <div class="row pt-5">
+          <div class="col-md-4 col-xl-4 p-1">
+              <div class="card">
+                  <div class="p-3" style="font-weight: 600">Chat</div>
+                  <div class="row">
+                      <div class="col-md-12 col-xl-12 col-sm-12">
+                          <div style="max-height: 170px; min-height: 170px; overflow:auto">
+                              <div class="card p-2" *ngFor="let chat of chatlist" style="border-left: 5px solid cadetblue; margin-bottom: 3px">
+                                  <div id="image_profile">
+                                    <span class="profileImage1 card-body">{{chat.user_name | slice:0:1}}</span>
+                                      <div id="profile_detail">
+                                          <div id="profile_name">{{chat.user_name}}</div>
+                                          <div>{{chat.message}}</div>
+                                      </div>
+                                  </div>
+                              </div>
+
+                          <div style="text-align: center; padding: 15px;" *ngIf="chatlist.length ===0">
+                            <div class="card p-2" style="border-left: 5px solid cadetblue; margin-bottom: 5px">
+                              <div id="image_profile" style="margin-left: -60px;">
+                                  <div id="profile_detail" style="text-align: center;">
+                                      <div id="profile_name">No Record Found</div>
+                                      <div> &nbsp;</div>
+                                  </div>
+                              </div>
+                          </div>
+                          </div>
+                          </div>
+                          <div class="pt-3 pb-3 pl-1 pr-1">
+                            <input class="form-control" [(ngModel)]="msgs" maxlength="60" placeholder="Comment will show after moderation"/> <br>
+                            <button class="btn btn-primary" (click)="sendMessage()">Send</button>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-4 col-xl-4 p-1">
+            <div class="card">
+                <div class="p-3" style="font-weight: 600"><span class="float-left">Poll</span><span class="float-right"></span></div>
+                <div class="row">
+                  <div class="col-md-12 col-xl-12 col-sm-12">
+                    <div *ngIf="showPoll" style="max-height: 300px; min-height: 300px; overflow:auto">
+                      <div class="card p-2"  *ngFor="let poll of  pollList">
+                          <div id="question">
+                              <b>Question:</b>
+                              <form [formGroup]="pollForm">
+                                  <p>{{poll.question}}</p>
+                                  <div *ngFor="let choice of poll.choice">
+                                      <input formControlName='polling' id="{{choice.choice}}" type="radio" value="{{choice.choice+'-'+choice.id}}" *ngIf="poll.status!== '2'">
+                                      <label for="{{choice.choice}}" style="cursor:pointer"> &nbsp;{{choice.choice}}</label>
+                                      <!-- <span class="float-right">{{choice.vote}}</span> -->
+                                      <span class="float-right" *ngIf=" poll.status == '2'">{{choice.vote/poll.totalvote  | percent}}</span>
+                                      <!-- <span class="float-right" *ngIf=" poll.status == '2'">
+                                        <span *ngFor="let result of pollpercent" >
+                                          <span>{{result}}</span>
+                                        </span>
+                                      </span> -->
+
+                                  </div>
+                                  <div>
+                                    <input type="button" *ngIf="poll.status!== '2'" class="btn btn-primary" id="formSubmit"  (click)="getPolls(poll._id)" value="Submit"/>
+                                  </div>
+                              </form>
+                          </div>
+                      </div>
+
+                      <div style="text-align: center; padding: 15px" *ngIf="pollList.length ===0">
+                          <div class="card p-2" style="border-left: 5px solid cadetblue; margin-bottom: 5px">
+                            <div id="image_profile" style="margin-left: -60px;">
+                                <div id="profile_detail" style="text-align: center;">
+                                    <div id="profile_name">No Record Found</div>
+                                    <div> &nbsp;</div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                  </div>
+                  <div *ngIf="showMsg" style="max-height: 300px; min-height: 300px; overflow:auto">
+                    <div class="card p-2" style="border-left: 5px solid cadetblue; margin-bottom: 5px">
+                      <div id="image_profile" style="margin-left: -60px;">
+                          <div id="profile_detail" style="text-align: center;">
+                              <div id="profile_name">{{this.messagePoll.message}}</div>
+                              <div> &nbsp;</div>
+                          </div>
+                      </div>
+                  </div></div>
+
+
+                </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-xl-4 p-1">
+          <div class="card">
+              <div class="p-3" style="font-weight: 600">Twitter</div>
+              <div class="row">
+                  <div class="col-md-12 col-xl-12 col-sm-12">
+                      <div style="max-height: 300px; min-height: 300px;  overflow: auto">
+                          <div class="card p-2" *ngFor="let tweet of approvedTweets" style="border-left: 5px solid cadetblue; margin-bottom: 3px">
+                              <div id="image_profile">
+                                <span class="profileImage1 card-body">{{tweet.name | slice:0:1}}</span>
+                                <div id="profile_detail">
+                                    <div id="profile_name">{{tweet.name}}</div>
+                                    <div>{{tweet.message}}</div>
+                                </div>
+                              </div>
+                          </div>
+
+                      <div style="text-align: center; padding: 15px" *ngIf="approvedTweets.length ===0">
+                        <div class="card p-2" style="border-left: 5px solid cadetblue; margin-bottom: 5px">
+                          <div id="image_profile" style="margin-left: -60px;">
+                              <div id="profile_detail" style="text-align: center;">
+                                  <div id="profile_name">No Record Found</div>
+                                  <div> &nbsp;</div>
+                              </div>
+                          </div>
+                      </div>
+                      </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      </div>
+    </div>
+    <div class="col-md-3 col-xl-3 p-1">
+        <div class="card">
+            <div class="pr-4 pt-3 pb-3 pl-1" style="font-weight: 600">
+                <div id="search_tab">
+                    <span class="fa fa-search"></span>
+                    <input type="text" class="form-control" placeholder="Search Participants">
+                </div>
+            </div>
+            <div class="row" style="max-height: 710px; min-height: 710px; overflow:auto">
+              <div class="col-md-11 col-xl-11 col-sm-11 col-xs-1">
+                <div *ngFor="let list of participantsList; let i = index">
+                  <div *ngIf="list.is_online === '1'" class="card p-2" style="border-left: 5px solid cadetblue;margin-bottom: 5px">
+                      <div id="image_profile">
+                        <span class="profileImage1 card-body">{{list.name | slice:0:1}}</span>
+                          <div id="profile_detail">
+                              <div id="profile_name">{{list.name}}</div>
+                              <div>{{list.email}}</div>
+                          </div>
+                      </div>
+                  </div>
+                </div>
+                  <div style="text-align: center; padding: 15px" *ngIf="participantsList.length ===0">
+                    <div class="card p-2" style="border-left: 5px solid cadetblue; margin-bottom: 5px">
+                      <div id="image_profile" style="margin-left: -60px;">
+                          <div id="profile_detail" style="text-align: center;">
+                              <div id="profile_name">No Record Found</div>
+                              <div> &nbsp;</div>
+                          </div>
+                      </div>
+                  </div>
+                  </div>
+              </div>
+              <div class="col-md-1 col-xl-1 col-sm-1"></div>
+          </div>
+
+
+        </div>
+    </div>
+</div>

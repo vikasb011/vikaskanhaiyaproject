@@ -1,0 +1,145 @@
+<div class="pcoded-content">
+        <div class="pcoded-inner-content">
+            <div class="main-body">
+                <div class="page-wrapper">
+                    <div class="row">
+                        <!-- [ fixed-layout ] start -->
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+
+                            <div class="card" style="min-height: 800px; border-radius: 16px; background-color: #f6f7fb;">
+
+
+                                <div class="card-body">
+                                  <h3><b>{{sponsorName.name}}</b></h3>
+                                  <div class="row">
+
+                                    <div class="col-md-3 col-xl-3">
+                                        <div class="card" style="min-height: 250px;
+                                        max-height: 410px;
+                                        overflow: auto;">
+                                            <div class="p-3"><b>Video Requests</b></div>
+                                            <div class="row">
+                                              <div class="col-md-12 col-xl-12 col-sm-12 col-xs-12" >
+                                                  <div class="card p-2" *ngFor="let req of scheduleDemoList" style="border-left: 5px solid cadetblue; margin-bottom: 5px;">
+                                                      <div id="image_profile">
+                                                          <img src="assets/images/avatar-3.jpg" width="50" height="50" alt="">
+                                                          <div id="profile_detail">
+                                                              <div id="profile_name">{{req.user_name}}</div>
+                                                              <div *ngIf="req.status === 'pending'">{{req.status}} &nbsp; <i  class="fa fa-check" aria-hidden="true" (click)="StartVideoChat(req)" style="cursor: pointer; color: red;"></i></div>
+                                                              <div *ngIf="req.status === 'approved'">join Call &nbsp; <i title="Approve Request" class="fa fa-check" aria-hidden="true"  (click)="joinCall(req)" style="cursor: pointer; color:green"></i></div>
+                                                          </div>
+                                                      </div>
+                                                  </div>
+
+                                                  <div style="text-align: center; padding: 15px" *ngIf="scheduleDemoList.length ===0">
+                                                    <div class="card p-2" style="border-left: 5px solid cadetblue; margin-bottom: 5px">
+                                                      <div id="image_profile" style="margin-left: -60px;">
+                                                          <div id="profile_detail" style="text-align: center;">
+                                                              <div id="profile_name">No Record Found</div>
+                                                              <div> &nbsp;</div>
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                                  </div>
+                                              </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-xl-3 p-1">
+                                      <div class="card" style="min-height: 250px;
+                                      max-height: 410px;
+                                      overflow: auto;">
+                                          <div class="p-3" style="font-weight: 500">Chat Requests</div>
+                                          <div class="row">
+                                              <div class="col-md-11 col-xl-11 col-sm-11 col-xs-1" *ngFor="let chat of listData">
+                                                  <div class="card p-2" style="border-left: 5px solid cadetblue; margin-bottom: 5px;">
+                                                    <div id="image_profile">
+                                                      <img src="assets/images/avatar-3.jpg" width="50" height="50" alt="">
+                                                      <div id="profile_detail">
+                                                          <div id="profile_name">{{chat.user_name}}</div>
+<div *ngIf="chat.status === 'pending'">{{chat.status}} &nbsp; <i  class="fa fa-check" aria-hidden="true" (click)="approveRequest(chat.user_id, chat.status)" style="cursor: pointer; color: red;"></i></div>
+                                                          <div *ngIf="chat.status === 'approved'">join Chat &nbsp; <i title="Approve Request" class="fa fa-check" aria-hidden="true"  (click)="joinChat(chat)" style="cursor: pointer; color:green"></i></div>
+
+                                                      </div>
+                                                  </div>
+                                                  </div>
+
+                                              </div>
+                                              <div style="text-align: center; padding: 15px" *ngIf="listData.length ===0">
+                                                <div class="card p-2" style="border-left: 5px solid cadetblue; margin-bottom: 5px">
+                                                  <div id="image_profile" style="margin-left: -60px;">
+                                                      <div id="profile_detail" style="text-align: center;">
+                                                          <div id="profile_name">No Record Found</div>
+                                                          <div> &nbsp;</div>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              </div>
+
+
+                                          </div>
+
+                                      </div>
+                                    </div>
+                                    <div class="col-md-3 col-xl-3 p-1">
+                                      <div class="card" style="min-height: 250px;
+                                      max-height: 410px;
+                                      overflow: auto;">
+                                          <div class="p-3" style="font-weight: 500">Leads</div>
+                                          <div class="row">
+                                              <div class="col-md-11 col-xl-11 col-sm-11 col-xs-1" *ngFor="let sponsor of sponsorData">
+                                                  <div class="card p-2" style="border-left: 5px solid cadetblue; margin-bottom: 5px;">
+                                                      <div id="image_profile">
+                                                          <img src="assets/images/avatar-3.jpg" width="50" height="50" alt="">
+                                                          <div id="profile_detail">
+                                                              <div id="profile_name">{{sponsor.name}}</div>
+                                                              <div>{{sponsor.email}}</div>
+                                                              <div>{{sponsor.phone}}</div>
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                                  <div style="text-align: center; padding: 15px" *ngIf="sponsorData.length ===0">
+                                                    <div class="card p-2" style="border-left: 5px solid cadetblue; margin-bottom: 5px">
+                                                      <div id="image_profile" style="margin-left: -60px;">
+                                                          <div id="profile_detail" style="text-align: center;">
+                                                              <div id="profile_name">No Record Found</div>
+                                                              <div> &nbsp;</div>
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                                  </div>
+
+
+
+                                          </div>
+
+                                      </div>
+                                    </div>
+                                    <div class="col-md-3 col-xl-3">
+                                      <div *ngIf="showChat">
+                                      <app-chatbox></app-chatbox>
+                                    </div>
+                                    </div>
+                                  </div>
+
+                                  </div>
+                               </div>
+
+
+
+
+
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+

@@ -1,0 +1,26 @@
+#general_items {
+    #general_name {
+        position: relative;
+        #letter {
+            background: #565656;
+            color: #fff;
+            position: relative;
+            left: 0;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            span {
+                position: absolute;
+                text-align: center;
+                left: 18px;
+                top: 16px;
+                font-size: 21px;
+            }
+        }
+        #text {
+            position: absolute;
+            left: 60px;
+            top: 12px;
+        }
+    }
+}

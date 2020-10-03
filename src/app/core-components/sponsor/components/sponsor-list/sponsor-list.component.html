@@ -1,0 +1,50 @@
+<div class="pcoded-content">
+    <div class="pcoded-inner-content">
+        <div class="main-body">
+            <div class="page-wrapper">
+                <div class="row">
+                    <!-- [ fixed-layout ] start -->
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+  
+  
+                        <div class="card" style="min-height: 800px; border-radius: 16px; background-color: #f6f7fb;">
+  
+  
+                            <div class="card-body">
+                              <h3><b>SPON</b>SORS</h3>
+                              <div class="row">
+                                <div class="col-xl-2 col-lg-2 col-md-2" *ngFor="let sponsor of sponsors[0]">
+                                    <div id="sponsors" style="cursor: pointer;" (click)="goSponsorDetail(sponsor.id)">
+                                        <img src="{{sponsor.image}}" alt="..." class="rounded-circle" width="90px" height="100px">
+                                        <div class="card">
+                                            <div id="sponsorText">
+                                                <div class="text-center">
+                                                    <b>{{sponsor.name}}</b>
+                                                      <h4 style="margin: -34px 0px 34px;">{{sponsor.email}}</h4>
+  
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+  
+                              </div>
+                           </div>
+  
+  
+  
+  
+  
+  
+                        </div>
+  
+                    </div>
+  
+  
+                </div>
+  
+            </div>
+        </div>
+    </div>
+  </div>
+  

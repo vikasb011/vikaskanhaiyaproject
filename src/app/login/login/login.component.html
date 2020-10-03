@@ -1,0 +1,47 @@
+<div class="login-page">
+  <mat-card class="mat-elevation-z12">
+
+    <mat-card-title style="text-align:center;">LogIn</mat-card-title>
+    <mat-error style="text-align: center;" *ngIf="msg">{{msg}}</mat-error>
+
+    <form (ngSubmit)="login()" [formGroup]="loginForm">
+      <mat-form-field>
+        <mat-label>Role</mat-label>
+        <mat-select formControlName="roleId">
+          <mat-option *ngFor="let role of Role" [value]="role.value">
+            {{role.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input
+          matInput
+          placeholder="Email"
+          required
+          name="email"
+          formControlName="email">
+          <!-- <mat-error *ngIf="email.invalid">Email is required</mat-error> -->
+        <mat-icon matSuffix>email</mat-icon>
+      </mat-form-field>
+      <mat-form-field>
+        <input
+          matInput
+          placeholder="Password"
+          type="password"
+          required
+          name="password"
+          formControlName="password">
+
+        <mat-icon matSuffix>lock</mat-icon>
+      </mat-form-field>
+      <mat-checkbox>Remember Me!</mat-checkbox>
+      <button
+        mat-raised-button
+        color="primary"
+        class="login-button">
+        Sign In
+      </button>
+    </form>
+  </mat-card>
+</div>

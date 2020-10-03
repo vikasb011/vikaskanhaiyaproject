@@ -1,0 +1,98 @@
+<div class="pcoded-content">
+        <div class="pcoded-inner-content">
+            <div class="main-body">
+                <div class="page-wrapper">
+                    <div class="row">
+                        <!-- [ fixed-layout ] start -->
+                        <div class="col-xl-9 col-lg-9 col-md-9 col-sm-12 col-xs-12 p-1">
+                            <div class="card" style="height:auto; background-color: #f6f7fb;">
+                                <img [src]="dashboardData.cover_picture" alt="" style="border-radius: 10px;" height="300px">
+                                <div class="bottom-left">
+                                    <h4 style="color: white;">{{dashboardData.event_title}}</h4>
+                                </div>
+                            </div>
+
+                            <div class="card" style="height: auto; border-radius: 16px; background-color: #f6f7fb;">
+                                <div class="card-body">
+                                    {{dashboardData.event_description}}
+                                    &nbsp;
+
+                                </div>
+                                <div class="card-body">
+                                 <h3><b>ACTIVE</b> SESSIONS</h3>
+
+                                 <div class="row">
+                                  <div class="col-xl-12 col-md-12">
+                                      <div class="row" *ngIf="sessions.length !== 0">
+                                          <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-4" *ngFor="let session of sessions; let i = index">
+                                            <div id="sessionImage">
+                                              <img src="{{session.banner}}" height="140px" width="95%" style="border-radius:5px; cursor: pointer;" alt="" (click)="gotoDashboarSession(session, i)">
+                                              <span class="float-right" style="position: relative; right: 10px; top: -34px"><button class="btn btn-danger pl-2 pr-2 pt-1 pb-1" style="font-size:10px">{{session.status}}</button></span>
+                                            </div>
+                                          </div>
+                                      </div>
+                                      <div *ngIf="sessions.length === 0">
+                                          <div class="card p-5">
+                                                <b>No Active Sessions are available.</b>
+                                          </div>
+                                      </div>
+                                  </div>
+
+                                </div>
+                              </div>
+                              <div class="card-body">
+                                <h3><b>SPEA</b>KERS</h3>
+                                <div class="row">
+                                  <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-4" *ngFor="let speaker of speakers[0]">
+                                    <div id="speaker_section">
+                                        <div class="card">
+                                            <div id="speakers">
+                                                <img src="{{speaker.image}}" alt="">
+                                                <div id="speakerProfile">
+                                                    <div><b>{{speaker.name}}</b></div>
+                                                    <div>{{speaker.designation}}</div>
+                                                    <div>
+                                                      <a href="{{speaker.facebook}}" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook"></i></a>
+                                                      <a href="{{speaker.twitter}}" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+                                                      <a style="color:black;" href="{{speaker.youtube}}" target="_blank" rel="noopener noreferrer"><i class="fab fa-google-plus"></i></a>
+                                                      <a style="color:black;" href="{{speaker.linkedin}}" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                  </div>
+                                </div>
+                             </div>
+
+                             <div class="card-body">
+                              <h3><b>SPON</b>SORS</h3>
+                              <div class="row">
+                                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xs-3" *ngFor="let sponosr of sponsors[0]">
+                                    <div id="sponsors"><a style="color: black;" [routerLink]="['/sponsor/sponsor-detail']" [queryParams]="{id: sponosr.id}">
+                                        <img src="{{sponosr.image}}" alt="..." width="90px" height="100px">
+                                        <div class="card">
+                                            <div id="sponsorText">
+                                                <div class="text-center">
+                                                    <b>{{sponosr.name}}</b>
+                                                    <h4 style="margin: -34px 0px 34px;">{{sponosr.email}}</h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        </a>
+                                    </div>
+                                </div>
+                               </div>
+                           </div>
+                            </div>
+
+                        </div>
+                        <div class="col-md-3 col-xl-3 p-1">
+                            <app-participants></app-participants>
+                        </div>
+                    </div>
+                    <!-- [ Main Content ] end -->
+                </div>
+            </div>
+        </div>
+    </div>

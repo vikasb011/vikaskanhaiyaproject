@@ -1,0 +1,97 @@
+<div class="row">
+    <div class="col-md-4 col-xl-4">
+        <div class="row" *ngIf="!showVideo">
+            <div class="col-12 p-1"><b>Speakers</b></div>
+            <div *ngIf="session_speakers.length===0">
+                <div>No Speaker is available.</div>
+            </div>
+            <div class="col-md-6 col-xl-6 p-1" *ngFor="let speaker of session_speakers">
+                <!-- {{speaker.id}} -- {{user_id}} -->
+                <div id="image_fluid">
+                    <img src="{{speaker.image}}" alt="" class="img-fluid">
+                    <div id="img_text">{{speaker.name}}</div>
+                </div>
+            </div>
+        </div>
+        <div class="row" *ngIf="showVideo">
+            <div class="col-12 p-1">
+                <b>Speakers</b>
+            </div>
+            <div class="col-12 p-1" *ngIf="remoteCalls.length === 0">                
+                <div>Waiting for other speakers to join the call.</div>
+            </div>
+            <div class="col-md-6 col-xl-6 p-1" *ngFor="let remote of remoteCalls">  
+                <!-- {{remote.id}}             -->
+                <div id="image_fluid">
+                    <!-- <img src="assets/images/4th_1.jpg" alt="" class="img-fluid"> -->
+                    <div  [id]="remote.id" class="remote img-fluid"></div>                                
+                    <div id="img_text">{{remote.name}}</div>
+                    <!-- <div id="img_text">Speaker Camera</div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8 col-xl-8">
+        <!-- For Speaker -->
+        <div *ngIf="role_id === 2" class="row">
+            <div class="col-md-12 col-xl-12 p-1">
+                <div id="img_banner">
+                        <!-- <img *ngIf="(speaker_id !== user_id) && session_speakers.length!==0" src="{{banner}}" alt="" class="img-fluid"> -->
+                    <img *ngIf="!showVideo && speaker_id === user_id" src="{{banner}}" alt="" class="img-fluid">
+                    <div class="video-chat" *ngIf="showVideo">
+                        <div id="agora_local" class="local"></div>
+                    </div>
+                    <div id="img_icons" *ngIf="(speaker_id === user_id) && status === 'live'">
+                        <span><i class="buttonFont fas fa-{{callConnect}}" [ngStyle]="{'color': connection? 'red': '#342f2fbd'}" (click)="toggleConnection()"></i></span>
+                        <span *ngIf="connection"><i class="buttonFont fas fa-{{ volume }}" aria-hidden="true" (click)="toggleVolume()"></i></span>
+                        <span *ngIf="connection"><i class="buttonFont fas fa-{{ video }}" aria-hidden="true" (click)="toggleVideo()"></i></span>
+                        <!-- <button class="btn btn-danger" (click)="startCall()">Join</button> -->
+                        <!-- <span *ngIf="connection"><i class="buttonFont fa fa-share-square" aria-hidden="true" (click)="toggleShareScreen()"></i></span> -->
+                    </div>
+                    <div *ngIf="speaker_id !== user_id">
+                        <vg-player style="height:370px">
+                            <!-- <video #myMedia [vgMedia]="myMedia" id="my-video" controls poster="{{banner}}"
+                                   src="{{videoPlayer}}" type="video/mp4">
+                            </video> -->
+                            <video #myMedia preload="auto" controls autoplay="true" [vgHls]="videoPlayer" 
+                            vg-responsive="false" poster="{{banner}}" [vgMedia]="myMedia" type="video/mp4">
+                            </video>
+                        </vg-player>
+                        
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <!-- For Audience -->
+        <div *ngIf="role_id === 1" class="row">
+            <div class="col-md-12 col-xl-12 p-1">
+                <div id="img_banner">
+                    <div *ngIf="!showVideo">
+                        <vg-player style="height:370px">
+                            <!-- <video #myMedia [vgMedia]="myMedia" id="my-video" controls poster="{{banner}}"
+                                   src="{{videoPlayer}}" type="video/mp4">
+                            </video> -->
+                            <video #myMedia preload="auto" controls autoplay="true" [vgHls]="videoPlayer" 
+                            vg-responsive="false" poster="{{banner}}" [vgMedia]="myMedia" type="video/mp4">
+                            </video>
+                        </vg-player>
+                    </div>
+                    <!-- <img *ngIf="!showVideo" src="assets/images/banner.jpg" alt="" class="img-fluid"> -->
+                    <div class="video-chat" *ngIf="showVideo">
+                        <div id="agora_local" class="local"></div>
+                    </div>
+                    <div id="img_icons" *ngIf="(session_speakers.length >=1) && status==='live'">
+                        <span *ngIf="requestStatus==='none' || requestStatus==='deleted'"><i  class="fa fa-hand-paper-o" style="cursor:pointer" aria-hidden="true" (click)="raiseHandrequestToModeratorCall()"></i></span>
+                        <span *ngIf="requestStatus==='pending'"><button class="btn btn-primary p-0" style="font-size:10px">Request Sent</button></span>
+                        <span *ngIf="requestStatus==='approved'"><i class="buttonFont fas fa-{{callConnect}}" [ngStyle]="{'color': connection? 'red': '#342f2fbd'}" (click)="toggleConnection()"></i></span>
+                        <span *ngIf="connection"><span [ngStyle]="{'display': disableEnableVolume? 'none': 'inline'}"><i class="buttonFont fas fa-{{ volume }}" aria-hidden="true" (click)="toggleVolume()"></i></span></span>
+                        <span *ngIf="connection"><span [ngStyle]="{'display': disableEnableVideo? 'none': 'inline'}"><i class="buttonFont fas fa-{{ video }}" aria-hidden="true" (click)="toggleVideo()"></i></span></span>
+                        <!-- <button class="btn btn-danger" (click)="startCall()">Join</button> -->
+                        <!-- <span *ngIf="connection"><i class="buttonFont fa fa-share-square" aria-hidden="true" (click)="toggleShareScreen()"></i></span> -->
+                   </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,68 @@
+#tooltip {
+  position: relative;
+  // display: inline-block;
+}
+
+#tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: #534f53;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -60px;
+}
+
+#tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+#channel_Item {
+  background: #565656;
+  color: aliceblue;
+  width: 56px;
+  border-radius: 5px;
+  #itemLetter {
+    padding: 5px;
+    text-align: center;
+    font-size: 25px;
+  }
+  #itemName {
+    font-size: 10px;
+    background: black;
+    text-align: center;
+    border-radius: 0 0 5px 5px;
+  }
+}
+
+#image_profile {
+  img {
+      float: left;
+      border-radius: 50%;
+  }
+  #profile_detail {
+      padding: 5px;
+      margin-left: 55px;
+
+      #profile_name {
+          font-weight: 600;
+      }
+  }
+}
+
+.noDisplay {
+  display: none;
+}
+.display {
+  display: block;
+}
+
+
+

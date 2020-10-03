@@ -1,0 +1,20 @@
+#close_window {
+	position: absolute;
+    right: 5px;
+    top: 3px;
+    z-index: 100;
+    font-size: 20px;
+}
+#search_tab .form-control {
+	padding-left: 25px;
+}
+#search_tab {
+	position: relative;
+}
+#search_tab .fa-search {
+	position: absolute;
+	color: #aaa;
+	vertical-align: center;
+	top: 9px;
+	left: 6px;
+}

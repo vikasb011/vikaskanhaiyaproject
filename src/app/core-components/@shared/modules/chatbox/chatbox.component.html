@@ -1,0 +1,29 @@
+<div class="card" id="chatSection" *ngIf="isShow">
+  <div class="p-3" style="font-weight: 500; background-color: #da251c; color: white;">Chat Room
+      <i class="fa fa-arrow-down float-right" title="Minimize Chat" *ngIf="showchat" (click)="hidediv()"></i>
+      <i class="fa fa-arrow-up float-right" *ngIf="hidechat" title="Maximize Chat" (click)="show()"></i>
+    </div>
+  <div class="row" *ngIf="showDiv">
+      <div class="col-md-12 col-xl-12 col-sm-12">
+          <div style="max-height: 200px;  min-height: 200px; overflow:auto">
+              <div class="card p-2" *ngFor="let message of messageList" style="border-left: 5px solid cadetblue; margin-bottom: 5px">
+                  <div id="image_profile" class="card-body" style="padding: 1px 12px;
+            ">
+                <span class="profileImage card-body" *ngIf="uName === message[1]" title="{{message[1]}}">{{message[1] | slice:0:1}}</span>
+                <span class="profileImage1 card-body"  *ngIf="uName != message[1]" title="{{message[1]}}">{{message[1] | slice:0:1}}</span>
+                <div *ngIf="uName === message[1]" id="profile_details">
+                   <div>{{message[0]}}</div>
+                   </div>
+                   <div *ngIf="uName != message[1]" id="profile_detail1">
+                    <div>{{message[0]}}</div>
+                    </div>
+              </div>
+              </div>
+          </div>
+          <div class="pt-3 pb-3 pl-1 pr-1">
+              <input class="form-control" [(ngModel)]="msgs" maxlength="60" placeholder="Write something here.." (keyup)="$event.keyCode == 13 && sendMessage()" /> <br>
+            <button class="btn btn-danger" (click)="sendMessage()">Send</button>
+          </div>
+      </div>
+  </div>
+</div>

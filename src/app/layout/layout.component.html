@@ -1,0 +1,70 @@
+
+<div id="mySidenav" class="sidenav card">
+  <div>
+    <li></li>
+    <li *ngFor="let menu of menuItems; let i = index;" routerLinkActive="linkActive">
+        <a  routerLink="/{{menu.path}}">
+          <i class="fas + {{menu.icon}}"></i>
+          <span [ngClass]="isExpanded ? show: 'hide'">{{menu.name}}</span>
+        </a>
+    </li>
+  </div>
+    <!-- <mat-list role="list">
+        <div *ngFor="let menu of menuItems; let i = index;" >
+          <mat-list-item role="listitem" >
+            <a  routerLink="/{{menu.path}}" routerLinkActive="active" (click)="closeNav()">
+              <i class="fas + {{menu.icon}}"></i>
+              <span [ngClass]="isExpanded ? show: 'hide'">&nbsp; {{menu.name}}</span>
+            </a>
+        </mat-list-item>
+        </div>
+      </mat-list> -->
+</div>
+<header class="navbar pcoded-header  navbar-expand-lg navbar-light headerpos-fixed header-blue">
+
+
+  <div class="m-header">
+    <a href="javascript:void(0)"  class="mobile-menu" id="mobile-collapse" (click)="openClose()"><span style="background-color: #606060;"></span></a>
+    <a routerLink="/dashboard"  class="b-brand">
+      <!-- ========   change your logo hear   ============ -->
+      <img src="assets/images/logo.png" alt="" class="logo">
+    </a>
+  </div>
+  <div class="collapse navbar-collapse" >
+    <ul class="navbar-nav ml-auto">
+      <!-- <li>
+        <div class="dropdown">
+          <a href="javascript:void(0)" class="dropdown-toggle"  data-toggle="dropdown">
+            <i class="fa fa-bell"></i><span class="badge bg-danger"><span class="sr-only"></span></span>
+          </a>
+        </div>
+      </li> -->
+      <li>
+        <div class="dropdown drp-user">
+          <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" style="height: 20px; width: 42px;">
+              <!-- <img src="assets/images/avatar-1.jpg" mat-button [matMenuTriggerFor]="menu" class="img-radius wid-40" alt="User-Profile-Image"> -->
+              <span class="profileImage1 card-body" mat-button [matMenuTriggerFor]="menu">{{roleData.name | slice:0:1}}</span>
+              <mat-menu style="color: black;" #menu="matMenu">
+                <span style="cursor: default;" mat-menu-item>{{roleData.name}}</span>
+                <span style="cursor: default;" mat-menu-item>{{roleData.email}}</span>
+                <span mat-menu-item title="Log Out" (click)="logOut()">Log Out</span>
+
+              </mat-menu>
+          </a>
+
+        </div>
+      </li>
+    </ul>
+  </div>
+</header>
+
+<div id="main">
+    <div id="main-page">
+      <div class="mt-5 pt-4">
+          <router-outlet></router-outlet>
+      </div>
+    </div>
+</div>
+<!-- <div id="footer">
+    Footer works.
+</div> -->

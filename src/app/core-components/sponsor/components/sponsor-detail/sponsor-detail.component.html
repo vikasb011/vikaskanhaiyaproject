@@ -1,0 +1,111 @@
+<style>
+vg-controls{
+  z-index: 1;
+}
+
+
+</style>
+<div class="row">
+    <div class="col-md-12 col-xl-12">
+        <div class="row">
+          <div class="col-lg-4 col-xl-4 col-md-4 col-sm-12 col-xs-12">
+            <div class="card">
+                <!-- <div class="card-header">
+                    <h3>0:32s</h3>
+                    <h5>Jane, from <br> London</h5>
+                </div> -->
+                <div class="card-body" style="height:auto; background-color: #f6f7fb; ">
+                    <h2>{{sponsors.name}}</h2>
+                    <h4>{{sponsors.email}}</h4>
+                    &nbsp;
+                    <p>A Socially <br> Consicous geek passionate <br> about story telling.</p>
+                  <div class="card">
+                    <div class="card-body" style="text-align: center;">
+                      <a href="{{sponsors.sposnor}}" target="_blank" rel="noopener noreferrer">
+                        <i style="color: gray;" class="fas fa-globe-asia"></i></a>
+
+                        <a href="{{sponsors.facebook}}" target="_blank" rel="noopener noreferrer">
+                          <i style="color: gray;" class="fab fa-facebook"></i></a>
+                          <a href="{{sponsors.twitter}}" target="_blank" rel="noopener noreferrer">
+                            <i style="color: gray;" class="fab fa-twitter"></i></a>
+                            <a href="{{sponsors.youtube}}" target="_blank" rel="noopener noreferrer">
+                              <i style="color: gray;" class="fab fa-youtube"></i></a>
+                              <a href="{{sponsors.linkedin}}" target="_blank" rel="noopener noreferrer">
+                                <i style="color: gray;" class="fab fa-linkedin"></i></a>
+                    </div>
+                  </div>
+
+           <div class="card-header">
+
+           </div>
+           <div class="card-header">
+
+        </div>
+        <div class="card-header">
+
+        </div>
+                   <button class="btn btn-primary" *ngIf="video_status===null || video_status === ''" (click)="scheduleDemo(sponsors.id)">Schedule Demo</button>
+                   <button class="btn btn-primary" *ngIf="video_status==='pending'" >Request sent</button>
+                   <button class="btn btn-primary" *ngIf="video_status==='approved'" (click)="joinCall()">Join Call</button>
+                   &nbsp; &nbsp;
+
+                   <button class="btn btn-primary" *ngIf="chat_status===null || chat_status === ''" (click)="chatRequest(sponsors.id)">Chat</button>
+                   <button class="btn btn-primary" *ngIf="chat_status==='pending'" >Request sent</button>
+                   <button class="btn btn-primary" *ngIf="chat_status==='approved'" (click)="joinChat()"> Join Chat</button>
+
+
+                </div>
+
+            </div>
+            <div *ngIf="isShow">
+              <app-chatbox></app-chatbox>
+            </div>
+        </div>
+            <div class="col-md-8 col-xl-8">
+                <div class="row">
+                    <div class="col-md-12 col-xl-12 p-1">
+                        <div id="img_banner">
+                          <vg-player  [ngStyle]="{'height':'400px'}">
+                            <vg-controls [vgAutohide]="true" [vgAutohideTime]="2">
+
+                              <vg-play-pause></vg-play-pause>
+                              <vg-time-display ></vg-time-display>
+                              <vg-playback-button></vg-playback-button>
+                              <vg-mute></vg-mute>
+                              <vg-volume></vg-volume>
+                              <vg-fullscreen ></vg-fullscreen>
+                            </vg-controls>
+                            <vg-buffering></vg-buffering>
+                            <video #myMedia [vgMedia]="myMedia" preload="auto"  autoplay="true"
+                            [src]="playerSource" vg-responsive="true"
+                            type="video/mp4"  >
+                            </video>
+                      </vg-player>
+
+                        </div>
+                        <div class="row">
+                          <div class="col-xl-12 col-md-12">
+                              <ul id="sessions">
+                                  <li class="p-2" *ngFor="let thumbs of thumbVideos">
+                                      <div id="sessionImage">
+                                          <img title="Do you want to play this video?" src="{{imgUrl}}" class="img-fluid" alt="" (click)="getVideo(thumbs)">
+                                      </div>
+
+                                  </li>
+                              </ul>
+                          </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+  </div>
+  <script>
+    $(".alert").alert();
+  </script>

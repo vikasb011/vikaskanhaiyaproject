@@ -1,0 +1,41 @@
+<div class="row">
+        <div class="col-md-4 col-xl-4">
+            <div class="row">
+                <div class="col-md-6 col-xl-6 p-1" *ngFor="let callId of remoteCalls">
+                    <!-- {{callId}} -->
+                    <div id="image_fluid">
+                        <!-- <img src="assets/images/4th_1.jpg" alt="" class="img-fluid"> -->
+                        <div  [id]="callId" class="remote img-fluid"></div>                                
+
+                        <div id="img_text">Speaker Camera</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8 col-xl-8">
+            <div class="row">
+                <div class="col-md-12 col-xl-12 p-1">
+                    <div id="img_banner">
+                        <img *ngIf="showBanner" src="assets/images/banner.jpg" alt="" class="img-fluid">
+                        <div class="video-chat" *ngIf="!showBanner">
+                            <div [id]="localCallId" class="local"></div>
+                        </div>
+                        <div id="img_icons" *ngIf="speaker_id === user_id">
+                            <span><i class="buttonFont fas fa-phone-slash" style="color: red;" (click)="leaveCall()"></i></span>
+                            <span><i class="buttonFont fas fa-{{ volume }}" aria-hidden="true" (click)="toggleVolume()"></i></span>
+                            <span><i class="buttonFont fas fa-{{ video }}" aria-hidden="true" (click)="toggleVideo()"></i></span>
+                            <button class="btn btn-danger" (click)="startCall()">Join</button>                        
+                        
+                            <!-- <button class="btn btn-danger" (click)="leaveCall()">Leave</button>&nbsp;
+                            <button class="btn btn-danger" (click)="startCall()">Join</button>                        
+                            <span><i class="fa fa-volume-up" aria-hidden="true"></i></span>
+                            <span><i class="fa fa-video-camera" aria-hidden="true" style="color: #4099ff"></i></span>
+                            <span><i class="fa fa-share-square" aria-hidden="true"></i></span>
+                            <span><i class="fa fa-wifi" aria-hidden="true"></i></span> -->
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>

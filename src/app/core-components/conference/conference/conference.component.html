@@ -1,0 +1,32 @@
+<div class="pcoded-main-container" >
+    <div id="sidemenu">
+        <ul class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+            <li *ngFor="let child of conferenceMenuItems;">
+                <a class="nav-link text-left" id="v-pills-settings-tab"  routerLinkActive="active" routerLink="/{{child.path}}" role="tab" aria-selected="true">
+                        <i class="fa {{child.icon}}"><div style="font-size: 8px">{{child.name}}</div></i>
+                </a>
+            </li>
+        </ul>
+    </div>    
+    <div class="pcoded-content" id="main-content">
+		<div style="padding: 1px;"></div>
+		<div class="col-md-12 col-xl-12">
+            <div class="row">
+
+				<div class="col-md-12 col-xl-12 col-sm-12">
+                        
+                    <router-outlet></router-outlet>                    
+                </div>
+                <!-- <div class="col-md-1 col-sm-12 col-xl-1 p-0 text-white" style="position: relative; left: 9px; bottom: 2px;">
+                        <ul class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                            <li *ngFor="let child of conferenceMenuItems;">
+                                <a class="nav-link text-left" id="v-pills-settings-tab"  routerLinkActive="active" routerLink="/{{child.path}}" role="tab" aria-selected="true">
+                                        <i class="fa {{child.icon}}"><div style="font-size: 8px">{{child.name}}</div></i>
+                                </a>
+                            </li>
+                        </ul>
+                </div> -->
+			</div>
+		</div>        
+	</div>
+</div>
